@@ -1,0 +1,105 @@
+/* ==========================================================================
+   ESTILOS GLOBAIS DA APRESENTAÇÃO
+   ========================================================================== */
+.txt-marca { color: #64FFDA !important; }
+.txt-erro { color: #FF4D4D !important; }
+.txt-p { font-size: 0.8em !important; }
+.txt-m { font-size: 0.85em !important; line-height: 1.6 !important; }
+.txt-sub { font-size: 0.75em !important; opacity: 0.7; }
+.txt-topo { margin-top: 5px !important; }
+.txt-sub.no-color { opacity: 0.8 !important; }
+.sem-margin { margin: 0 !important; }
+.margin-t { margin-top: 20px !important; }
+.margin-b { margin-bottom: 10px !important; }
+.padding-g { padding: 25px !important; }
+.text-left { text-align: left !important; }
+.full-width { width: 100% !important; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.icone-g { font-size: 24px !important; }
+
+/* Dicas e Instruções menores */
+.dica-navegacao { font-size: 0.6em !important; margin-top: 30px !important; opacity: 0.5; }
+
+/* Listas customizadas */
+.lista-custom { text-align: left; margin-top: 20px; }
+.lista-custom li { margin-bottom: 15px; font-size: 0.9em; }
+.lista-custom.espacada li { margin-top: 20px; }
+
+/* ==========================================================================
+   SISTEMA DE GRIDS RESPONSIVOS (MÁXIMO 2 OU 3 QUADROS POR TELA)
+   ========================================================================== */
+.quadros-container {
+  display: grid;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* Definição de colunas no Desktop */
+@media (min-width: 769px) {
+  .quadros-container.col-2 { grid-template-columns: 1fr 1fr; }
+  .quadros-container.col-3 { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+/* Fallback/Quebra obrigatória para Mobile (1 quadro por linha) */
+@media (max-width: 768px) {
+  .quadros-container {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+  /* Reduções finas para não transbordar em telas pequenas */
+  .quadro-card h3, .quadro-card h4 { font-size: 0.9em !important; }
+  .quadro-card p { font-size: 0.7em !important; }
+}
+
+/* Estilização dos Quadros Básicos */
+.quadro-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1;
+}
+.quadro-card.ciano-bg { background: rgba(100, 255, 212, 0.05); }
+.quadro-card.vermelho-bg { background: rgba(255, 77, 77, 0.05); border: 1px solid rgba(255, 77, 77, 0.2); }
+.quadro-card.borda-sutil { background: rgba(100, 255, 218, 0.03); border: 1px solid rgba(100, 255, 218, 0.1); }
+.quadro-card.borda-topo { background: rgba(255, 255, 255, 0.03); border-top: 3px solid #64FFDA; border-radius: 0 0 8px 8px; }
+
+/* ==========================================================================
+   CONTAINERS LINEARES (LINHAS DE TEXTO)
+   ========================================================================== */
+.linhas-container { margin-top: 30px; text-align: left; }
+.linha-destaque { margin-bottom: 15px; border-left: 4px solid #64FFDA; padding-left: 15px; font-size: 0.95em; }
+.linha-decorativa { background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; font-size: 0.8em; margin-top: 20px; }
+.badge-tecnico { margin-top: 15px; border-top: 1px dashed rgba(100, 255, 218, 0.3); padding-top: 15px; font-size: 0.8em; color: #64FFDA; }
+
+/* Identação em blocos (Carrossel) */
+@media (min-width: 769px) {
+  .container-identado .b-2 { margin-left: 40px; }
+  .container-identado .b-3 { margin-left: 80px; }
+}
+.bloco-dashed { font-size: 0.9em; margin-bottom: 20px; padding: 10px; background: rgba(100, 255, 218, 0.03); border: 1px dashed #64FFDA; }
+
+/* Container Flex Interativo (Pai x Filho) */
+.flex-interativo { display: flex; gap: 30px; margin-top: 40px; align-items: stretch; }
+@media (max-width: 768px) {
+  .flex-interativo { flex-direction: column; gap: 15px; }
+}
+
+/* ==========================================================================
+   METÁFORA VISUAL 3D (Z-INDEX STACK)
+   ========================================================================== */
+.stack-3d-container { position: relative; height: 300px; margin-top: 40px; }
+.stack-layer { padding: 20px; position: absolute; width: 60%; height: 150px; border: 2px solid #64FFDA; display: flex; align-items: center; justify-content: center; transform: skewX(-10deg); }
+
+.layer-0 { background: #334155; bottom: 0; left: 0; z-index: 1; }
+.layer-1 { background: rgba(0,0,0,0.8); bottom: 50px; left: 20%; z-index: 2; }
+.layer-2 { background: rgba(100, 255, 218, 0.2); bottom: 100px; left: 40%; z-index: 3; backdrop-filter: blur(2px); }
+
+@media (max-width: 768px) {
+  /* No mobile, removemos o efeito 3D absoluto sobreposto para não quebrar a caixa */
+  .stack-3d-container { height: auto; display: flex; flex-direction: column; gap: 10px; }
+  .stack-layer { position: static; width: 100%; height: auto; transform: none; padding: 15px; box-sizing: border-box; }
+}
+
+svg{
+    width: 75%;
+}
