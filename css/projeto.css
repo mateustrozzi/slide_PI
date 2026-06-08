@@ -101,36 +101,68 @@
 }
 
 /* ==========================================================================
-   FORÇAR EXIBIÇÃO DAS SETAS DE NAVEGAÇÃO NO MOBILE
+   FORÇAR SETAS NO MOBILE (PORTRAIT E LANDSCAPE)
    ========================================================================== */
 
-/* Garante que o container das setas fique visível em telas touch/mobile */
 @media (max-width: 768px) {
+  /* 1. Reset e ativação global do container de controles no mobile */
   .reveal .controls {
-    display: block !important;
+    display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
-    /* Aumenta o tamanho geral da área de controle para facilitar o clique com o polegar */
-    bottom: 20px !important;
-    right: 20px !important;
+    pointer-events: auto !important;
+    
+    /* Reposiciona para a parte inferior central ou lateral de forma segura */
+    bottom: 15px !important;
+    right: 15px !important;
+    left: auto !important;
+    top: auto !important;
   }
 
-  /* Como a navegação é apenas horizontal, podemos destacar as setas esquerda/direita */
+  /* 2. Forçar exibição e tamanho das setas horizontais */
   .reveal .controls .navigate-left,
   .reveal .controls .navigate-right {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
-    /* Aumenta o tamanho visual da seta */
-    width: 2.5em !important;
-    height: 2.5em !important;
+    pointer-events: auto !important;
+    width: 2.8em !important;  /* Tamanho ideal para toque com o polegar */
+    height: 2.8em !important;
   }
 
-  /* Opcional: Oculta as setas para cima/baixo no mobile para não confundir o usuário,
-     já que limpamos os sub-slides verticais */
+  /* 3. Ajuste cirúrgico para PORTRAIT (Tela em pé) */
+  @media (orientation: portrait) {
+    .reveal .controls {
+      /* Agrupa as setas ligeiramente mais afastadas no canto inferior */
+      bottom: 20px !important;
+      right: 20px !important;
+    }
+    
+    /* Garante que o texto do slide termine antes das setas para evitar sobreposição */
+    .reveal .slides section {
+      padding-bottom: 80px !important; 
+      box-sizing: border-box !important;
+    }
+  }
+
+  /* 4. Ajuste cirúrgico para LANDSCAPE (Tela deitada) */
+  @media (orientation: landscape) {
+    .reveal .controls {
+      bottom: 10px !important;
+      right: 10px !important;
+    }
+    
+    .reveal .slides section {
+      padding-bottom: 50px !important;
+    }
+  }
+
+  /* 5. Ocultar setas verticais em qualquer orientação mobile */
   .reveal .controls .navigate-up,
   .reveal .controls .navigate-down {
     display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
   }
 }
 
