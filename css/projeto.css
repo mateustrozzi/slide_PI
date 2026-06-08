@@ -101,68 +101,70 @@
 }
 
 /* ==========================================================================
-   FORÇAR SETAS NO MOBILE (PORTRAIT E LANDSCAPE)
+   FORÇAR SETAS NO MOBILE (MÁXIMA PRIORIDADE PORTRAIT/LANDSCAPE)
    ========================================================================== */
 
 @media (max-width: 768px) {
-  /* 1. Reset e ativação global do container de controles no mobile */
-  .reveal .controls {
+  /* Força o container principal a ficar visível e interativo */
+  .reveal .controls,
+  .reveal .controls-arrow {
     display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
     
-    /* Reposiciona para a parte inferior central ou lateral de forma segura */
-    bottom: 15px !important;
-    right: 15px !important;
+    /* Posiciona fixo no canto inferior direito para toque confortável */
+    bottom: 25px !important;
+    right: 25px !important;
     left: auto !important;
     top: auto !important;
+    width: 110px !important; /* Espaço para abrigar as duas setas lado a lado */
+    height: 50px !important;
   }
 
-  /* 2. Forçar exibição e tamanho das setas horizontais */
-  .reveal .controls .navigate-left,
-  .reveal .controls .navigate-right {
+  /* Força os botões específicos a aparecerem */
+  .reveal .controls button.navigate-left,
+  .reveal .controls button.navigate-right {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    width: 2.8em !important;  /* Tamanho ideal para toque com o polegar */
-    height: 2.8em !important;
+    width: 45px !important;
+    height: 45px !important;
+    min-width: 45px !important;
   }
 
-  /* 3. Ajuste cirúrgico para PORTRAIT (Tela em pé) */
+  /* HACK CRUCIAL: O Reveal.js costuma dar opacidade zero para as pseudo-setas internas. 
+     Isso garante que o desenho interno da seta ganhe cor e apareça. */
+  .reveal .controls .navigate-left::before,
+  .reveal .controls .navigate-left::after,
+  .reveal .controls .navigate-right::before,
+  .reveal .controls .navigate-right::after {
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: #000 !important; /* Mude para a cor que preferir para destacar (ex: #fff) */
+  }
+
+  /* Garante o recuo do texto nas seções para não cobrir os botões no modo em pé */
   @media (orientation: portrait) {
-    .reveal .controls {
-      /* Agrupa as setas ligeiramente mais afastadas no canto inferior */
-      bottom: 20px !important;
-      right: 20px !important;
-    }
-    
-    /* Garante que o texto do slide termine antes das setas para evitar sobreposição */
     .reveal .slides section {
-      padding-bottom: 80px !important; 
-      box-sizing: border-box !important;
+      padding-bottom: 90px !important;
     }
   }
-
-  /* 4. Ajuste cirúrgico para LANDSCAPE (Tela deitada) */
+  
   @media (orientation: landscape) {
-    .reveal .controls {
-      bottom: 10px !important;
-      right: 10px !important;
-    }
-    
     .reveal .slides section {
-      padding-bottom: 50px !important;
+      padding-bottom: 60px !important;
     }
   }
 
-  /* 5. Ocultar setas verticais em qualquer orientação mobile */
-  .reveal .controls .navigate-up,
-  .reveal .controls .navigate-down {
+  /* Esconde completamente os botões verticais sob qualquer hipótese */
+  .reveal .controls button.navigate-up,
+  .reveal .controls button.navigate-down {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
+    pointer-events: none !important;
   }
 }
 
