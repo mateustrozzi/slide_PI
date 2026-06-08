@@ -1295,11 +1295,51 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
+        controls: true,           // Garante que os controles existam
+        controlsTutorial: false,  // Desativa as setas piscantes de tutorial que confundem o layout
+        controlsLayout: 'edges',
+        controlsBackArrows: 'faded',
+        // Isso desativa o comportamento do Reveal de tentar esconder as coisas baseado em touch
+  embedded: false,
+
+        
 
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
 			});
 		</script>
+    <div id="custom-mobile-controls">
+  <button id="btn-reveal-prev" aria-label="Slide Anterior">&#10094;</button>
+  <button id="btn-reveal-next" aria-label="Próximo Slide">&#10095;</button>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // 1. Desativa o swipe travado e oculta os controles nativos originais
+    if (typeof Reveal !== 'undefined') {
+      Reveal.configure({ 
+        touch: false,
+        controls: false // Desliga os controles nativos para não dar conflito
+      });
+    }
+
+    // 2. Mapeia os cliques dos nossos novos botões para o motor do Reveal
+    var btnPrev = document.getElementById('btn-reveal-prev');
+    var btnNext = document.getElementById('btn-reveal-next');
+
+    if (btnPrev && btnNext) {
+      btnPrev.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof Reveal !== 'undefined') Reveal.prev();
+      });
+
+      btnNext.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof Reveal !== 'undefined') Reveal.next();
+      });
+    }
+  });
+</script>
     
 	</body>
 </html>
