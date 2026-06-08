@@ -100,6 +100,40 @@
   .stack-layer { position: static; width: 100%; height: auto; transform: none; padding: 15px; box-sizing: border-box; }
 }
 
+/* ==========================================================================
+   FORÇAR EXIBIÇÃO DAS SETAS DE NAVEGAÇÃO NO MOBILE
+   ========================================================================== */
+
+/* Garante que o container das setas fique visível em telas touch/mobile */
+@media (max-width: 768px) {
+  .reveal .controls {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    /* Aumenta o tamanho geral da área de controle para facilitar o clique com o polegar */
+    bottom: 20px !important;
+    right: 20px !important;
+  }
+
+  /* Como a navegação é apenas horizontal, podemos destacar as setas esquerda/direita */
+  .reveal .controls .navigate-left,
+  .reveal .controls .navigate-right {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    /* Aumenta o tamanho visual da seta */
+    width: 2.5em !important;
+    height: 2.5em !important;
+  }
+
+  /* Opcional: Oculta as setas para cima/baixo no mobile para não confundir o usuário,
+     já que limpamos os sub-slides verticais */
+  .reveal .controls .navigate-up,
+  .reveal .controls .navigate-down {
+    display: none !important;
+  }
+}
+
 svg{
     width: 75%;
 }
