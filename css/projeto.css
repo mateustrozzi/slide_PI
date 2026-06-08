@@ -262,7 +262,52 @@
     transform: scale(1.05) !important; /* Leve pulsação ao passar o mouse */
   }
 }
+/* ==========================================================================
+   REGRAS EXCLUSIVAS PARA DESKTOP (SUPER BOTÕES DE 100PX)
+   ========================================================================== */
+@media (min-width: 769px) {
+  /* Altera os botões para o tamanho monumental de 100px */
+  #custom-mobile-controls button {
+    width: 100px !important;    /* Diâmetro exato requisitado */
+    height: 100px !important;
+    font-size: 38px !important; /* Aumenta a seta interna para acompanhar o tamanho do botão */
+    border-width: 3px !important; /* Borda ligeiramente mais espessa para dar peso visual */
+    background-color: rgba(0, 0, 0, 0.4) !important; /* Um pouco mais translúcido para não pesar na tela */
+  }
+
+  /* Ajuste de posicionamento no monitor */
+  #custom-mobile-controls {
+    padding: 0 50px !important; /* Afasta os botões gigantes da borda física da janela */
+    bottom: 50px !important;    /* Eleva os botões para flutuarem com elegância na base */
+  }
+
+  /* Efeito dinâmico de Hover no Desktop */
+  #custom-mobile-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.85) !important;
+    border-color: #ffffff !important;
+    transform: scale(1.05) !important; /* Leve pulsação ao passar o ponteiro */
+  }
+
+  /* MEDIDA DE SEGURANÇA: Como os botões agora ocupam 100px nas quinas inferiores,
+     forçamos os slides a abrirem mais espaço na base para o conteúdo nunca encavalar */
+  .reveal .slides section {
+    padding-bottom: 160px !important; 
+    box-sizing: border-box !important;
+  }
+}
 
 svg{
     width: 75%;
+}
+.protrait{
+    height: auto;
+    width: 60%;
+}
+.landscape{
+    width: 120%;
+    height: auto; 
+}
+.desktop{
+    height: 150%;
+    width: 150%;
 }
