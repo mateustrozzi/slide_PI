@@ -176,41 +176,75 @@
 #custom-mobile-controls {
   display: flex !important;
   position: fixed !important;
-  
-  /* FIXAÇÃO NO BOTTOM COM MARGEM DE SEGURANÇA */
-  bottom: 30px !important;       /* Distância ideal para não colar na borda física do aparelho */
+  bottom: 30px !important;
   left: 0 !important;
   right: 0 !important;
   width: 100vw !important;
-  
-  /* DISTRIBUIÇÃO LATERAL */
-  justify-content: space-between !important; /* Joga o botão Prev para a esquerda e o Next para a direita */
-  padding: 0 25px !important;     /* Margem para os botões não colarem nas quinas da tela */
+  justify-content: space-between !important;
+  padding: 0 25px !important;
   box-sizing: border-box !important;
-  
-  z-index: 9999 !important;       /* Sempre acima de qualquer elemento do slide */
-  pointer-events: none !important; /* Permite clicar no slide "através" do espaço vazio entre os botões */
+  z-index: 9999 !important;
+  pointer-events: none !important;
 }
 
-/* Estilização dos botões esféricos */
+/* Estilização dos botões esféricos - Base (Mobile Portrait: 50px) */
 #custom-mobile-controls button {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   width: 50px !important;
   height: 50px !important;
-  border-radius: 50% !important; /* Formato redondo padrão pílula */
-  background-color: rgba(0, 0, 0, 0.7) !important; /* Fundo escuro com opacidade */
+  border-radius: 50% !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
   color: #ffffff !important;
   border: 2px solid rgba(255, 255, 255, 0.3) !important;
   font-size: 22px !important;
   font-weight: bold !important;
   cursor: pointer !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
-  
-  pointer-events: auto !important; /* Reativa o clique estritamente em cima do botão */
+  pointer-events: auto !important;
   transition: background-color 0.2s, transform 0.1s !important;
-  -webkit-tap-highlight-color: transparent !important; /* Remove o flash azul do clique no mobile */
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Mobile Landscape: 48px */
+@media (max-width: 950px) and (orientation: landscape) {
+  #custom-mobile-controls button {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 20px !important;
+  }
+  #custom-mobile-controls {
+    bottom: 15px !important;
+  }
+}
+
+/* Desktop: 80px */
+@media (min-width: 951px) {
+  #custom-mobile-controls button {
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 32px !important;
+    border-width: 3px !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+  }
+
+  #custom-mobile-controls {
+    padding: 0 50px !important;
+    bottom: 50px !important;
+  }
+
+  #custom-mobile-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.85) !important;
+    border-color: #ffffff !important;
+    transform: scale(1.05) !important;
+  }
+
+  /* Recuo para evitar sobreposição no desktop */
+  .reveal .slides section {
+    padding-bottom: 120px !important;
+    box-sizing: border-box !important;
+  }
 }
 
 /* Feedback tátil imediato ao tocar/clicar */
@@ -219,95 +253,42 @@
   transform: scale(0.92) !important;
 }
 
-/* Hover suave para Desktop */
-@media (min-width: 769px) {
-  #custom-mobile-controls button:hover {
-    background-color: rgba(0, 0, 0, 0.9) !important;
-    border-color: #ffffff !important;
-  }
-}
-
 /* ==========================================================================
    RECUO SEGURO DOS CONTEÚDOS NOS SLIDES
    ========================================================================== */
 .reveal .slides section {
-  /* Margens laterais para o texto não bater nos botões */
-  padding-left: 75px !important;
-  padding-right: 75px !important;
-  /* Margem inferior aumentada para o conteúdo não descer atrás dos botões na base */
-}
-
-/* ==========================================================================
-   REGRAS EXCLUSIVAS PARA DESKTOP (BOTÕES MAIORES E HOVER)
-   ========================================================================== */
-@media (min-width: 769px) {
-  /* Aumenta o tamanho físico dos botões no computador */
-  #custom-mobile-controls button {
-    width: 64px !important;    /* Diâmetro maior para o Desktop */
-    height: 64px !important;
-    font-size: 26px !important; /* A seta interna cresce proporcionalmente */
-    background-color: rgba(0, 0, 0, 0.5) !important; /* Fica um pouco mais sutil em repouso */
-  }
-
-  /* Afasta os botões um pouco mais da quina no monitor, se quiser */
-  #custom-mobile-controls {
-    padding: 0 40px !important; /* Mais respiro lateral no Desktop */
-    bottom: 40px !important;    /* Flutua um pouco mais alto na tela grande */
-  }
-
-  /* Efeito de passar o mouse no Desktop (Hover) */
-  #custom-mobile-controls button:hover {
-    background-color: rgba(0, 0, 0, 0.85) !important;
-    border-color: #ffffff !important;
-    transform: scale(1.05) !important; /* Leve pulsação ao passar o mouse */
-  }
-}
-/* ==========================================================================
-   REGRAS EXCLUSIVAS PARA DESKTOP (SUPER BOTÕES DE 100PX)
-   ========================================================================== */
-@media (min-width: 769px) {
-  /* Altera os botões para o tamanho monumental de 100px */
-  #custom-mobile-controls button {
-    width: 100px !important;    /* Diâmetro exato requisitado */
-    height: 100px !important;
-    font-size: 38px !important; /* Aumenta a seta interna para acompanhar o tamanho do botão */
-    border-width: 3px !important; /* Borda ligeiramente mais espessa para dar peso visual */
-    background-color: rgba(0, 0, 0, 0.4) !important; /* Um pouco mais translúcido para não pesar na tela */
-  }
-
-  /* Ajuste de posicionamento no monitor */
-  #custom-mobile-controls {
-    padding: 0 50px !important; /* Afasta os botões gigantes da borda física da janela */
-    bottom: 50px !important;    /* Eleva os botões para flutuarem com elegância na base */
-  }
-
-  /* Efeito dinâmico de Hover no Desktop */
-  #custom-mobile-controls button:hover {
-    background-color: rgba(0, 0, 0, 0.85) !important;
-    border-color: #ffffff !important;
-    transform: scale(1.05) !important; /* Leve pulsação ao passar o ponteiro */
-  }
-
-  /* MEDIDA DE SEGURANÇA: Como os botões agora ocupam 100px nas quinas inferiores,
-     forçamos os slides a abrirem mais espaço na base para o conteúdo nunca encavalar */
-  .reveal .slides section {
-    padding-bottom: 160px !important; 
-    box-sizing: border-box !important;
-  }
+  padding-left: 50px !important;
+  padding-right: 50px !important;
 }
 
 svg{
-    width: 75%;
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    max-width: 90%;
+    max-height: 65vh;
 }
 .protrait{
+    display: block;
+    margin: 0 auto;
     height: auto;
-    width: 60%;
+    width: auto;
+    max-width: 90%;
+    max-height: 75vh;
 }
 .landscape{
-    width: 120%;
-    height: auto; 
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    max-width: 95%;
+    max-height: 75vh;
 }
 .desktop{
-    height: 150%;
-    width: 150%;
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    width: auto;
+    max-width: 95%;
+    max-height: 75vh;
 }
