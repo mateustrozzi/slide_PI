@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo CSS Grid - Irmãos Berreta</title>
+    <style>
+        /* Configurações básicas de reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #2c3e50;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* 1. O CONTAINER PRINCIPAL 
+          Definimos a altura como 100vh (toda a tela) e criamos a estrutura.
+        */
+        .grid-container {
+            display: grid;
+            width: 100%;
+            height: 100vh;
+            
+            /* 4 colunas de tamanhos iguais */
+            grid-template-columns: repeat(4, 1fr);
+            
+            /* 3 linhas com comportamento flexível:
+              - A primeira (topo) se ajusta ao tamanho do conteúdo (auto)
+              - A segunda (meio/banner) pega o máximo de espaço livre (1fr)
+              - A terceira (rodapé) se ajusta ao conteúdo (auto)
+            */
+            grid-template-rows: auto 1fr auto;
+            
+            /* Bordas para simular as linhas de guia do rascunho */
+            border: 2px solid #00ffff;
+        }
+
+        /* Bordas internas para destacar as colunas.
+          Usamos esse seletor para colocar bordas esquerdas em todas as colunas.
+        */
+        .grid-item {
+            border-left: 1px dotted rgba(0, 255, 255, 0.4);
+            border-bottom: 1px dotted rgba(0, 255, 255, 0.4);
+            padding: 20px;
+        }
+
+        /* 2. POSICIONAMENTO DOS ELEMENTOS 
+        */
+
+        /* Logo: Ocupa a linha 1, e vai da coluna 2 até a 4 (ocupa 2 colunas) */
+        .logo {
+            grid-row: 1;
+            grid-column: 2 / 4;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Menu Hambúrguer: Linha 1, última coluna (4) */
+        .menu-icon {
+            grid-row: 1;
+            grid-column: 4;
+            text-align: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* O Banner (Caminhão): Ele vai ocupar a LINHA 2 inteira.
+          Para cruzar todas as 4 colunas de fundo, usamos "1 / -1" (do início ao fim).
+        */
+        .banner-content {
+            grid-row: 2;
+            grid-column: 1 / -1;
+            
+            /* Centraliza o conteúdo verticalmente dentro da linha 2 */
+            display: grid;
+            align-content: center;
+            padding: 40px;
+            
+            /* Simulando a imagem de fundo com uma cor escura */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('sua-imagem.jpg') center/cover no-repeat;
+            background-color: #34495e; 
+        }
+
+        .banner-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .banner-content p {
+            font-size: 1.1rem;
+            color: #bdc3c7;
+            max-width: 600px;
+        }
+
+        /* Rodapé / Ícone de quatro pontas: Linha 3, última coluna (4) */
+        .footer-icon {
+            grid-row: 3;
+            grid-column: 4;
+            text-align: right;
+            font-size: 1.2rem;
+            color: #00ffff;
+        }
+
+	/* Quando a tela for um desktop (maior que 1024px) */
+@media (min-width: 1024px) {
+    
+    .grid-container {
+        /* Opcional: Você pode transformar o grid em 6 ou 12 colunas no desktop 
+           para ter mais precisão se o design exigir mais elementos na tela */
+        grid-template-columns: 1fr repeat(4, minmax(0, 300px)) 1fr;
+    }
+
+    .menu-icon {
+        display: none; /* Esconde o hambúrguer no desktop */
+    }
+
+    .desktop-menu {
+        display: block; /* Mostra o menu com os links abertos */
+        grid-column: 3 / 5; /* Faz o menu ocupar as últimas colunas da direita */
+        grid-row: 1;
+    }
+
+    .banner-content h1 {
+        font-size: 4rem; /* O título cresce para acompanhar o tamanho da tela */
+    }
+}
+    </style>
+</head>
+<body>
+
+    <div class="grid-container">
+        
+        <div class="grid-item logo">
+            Irmãos Berreta
+        </div>
+        
+        <div class="grid-item menu-icon">
+            ☰
+        </div>
+        
+        <div class="grid-item banner-content">
+            <h1>Grandes distâncias</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nemo odio libero? Delectus...</p>
+        </div>
+        
+        <div class="grid-item footer-icon">
+            ✦
+        </div>
+
+    </div>
+
+</body>
+</html>
