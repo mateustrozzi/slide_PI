@@ -28,7 +28,13 @@
         .fragment.fade-up {
             transition: all 0.5s ease;
         }
+        .uml{
+        display: flex !important;
+        flex-direction: column !important; 
+        align-items: center !important;
+        }
     </style>
+    
 </head>
 <body>
     <div class="reveal">
@@ -51,61 +57,79 @@
                 </section>
                 
                 <section>
-                    <h2>1. A Empresa e sua História</h2>
-                    <p class="fragment fade-up">Breve resumo sobre a trajetória da empresa, seus valores e como se consolidou no mercado de autopeças.</p>
+                    <h2>A Empresa e sua História</h2>
+                    <img src="imgs/img_slides/empresa.jpeg" alt="Oficina Irmãos Berreta" srcset="">                    
+                </section>
+                    
+                <section>
+                    <h2>A trajetória:</h2>
+                    
+                    <div class="r-stack">
+                        <p class="fragment fade-out" data-fragment-index="1">Origem e Fundação: Os irmãos José e Jorge Berretta começaram a trabalhar na infância e, em 1977, fundaram a Autopeças Mecânica São Jorge em um pequeno galpão na Vila Daniel</p>
+                        <p class="fragment fade-in-then-out" data-fragment-index="1">Crescimento e Inovação: Com quase 50 anos de história, o negócio expandiu (estando desde 2007 na Avenida João Miziara), tornou-se referência regional na manutenção de caminhões e acompanhou toda a evolução tecnológica do setor — da mecânica manual à era digital.</p>
+                        <p class="fragment fade-in" data-fragment-index="2">Impacto Local: Mais do que uma empresa, a oficina gerou empregos, formou profissionais e criou laços profundos com a comunidade.</p>
+                    </div>
                 </section>
 
                 <section>
-                    <h2>2. Mapa Mental</h2>
-                    <p>Estrutura lógica do projeto e conexões entre as funcionalidades.</p>
+                    <h2>Mapa Mental</h2>
                     <div style="background: #333; padding: 40px; border: 2px dashed #666; margin-top: 20px;">
-                        [Imagem do Mapa Mental]
+                        <img src="imgs/img_slides/mm.jpeg" alt="Mapa mental" srcset="">
+                    </div>
+                </section>
+
+                <section id="slide-requisitos">
+    <h2>Requisitos</h2>
+    
+    <div style="display: grid; grid-template-columns: 1fr; margin-top: 20px;">
+        
+        <div class="fragment fade-out" data-fragment-index="0" style="grid-area: 1 / 1 / 2 / 2; background: rgba(46, 204, 113, 0.2); padding: 20px; border-radius: 10px;">
+            <h4 style="color: #2ecc71;">Funcionais</h4>
+            <ul style="font-size: 0.6em; text-align: left;">
+                <li>O site deverá exibir um mapa de como chegar à oficina.</li>
+                <li>O site deverá apresentar as perguntas frequentes.</li>
+                <li>O site deverá exibir link para whatsapp, telefone e localização.</li>
+                <li>O site deverá exibir os diferenciais da empresa (em relação aos concorrentes).</li>
+                <li>O site deverá exibir uma seção “Sobre nós”.</li>
+                <li>O site deverá formar a página “Home” com um carrossel abaixo do header</li>
+                <li>O site deverá exibir os nossos (principais) serviços</li>                                
+            </ul>
+        </div> 
+
+        <div class="fragment fade-in" data-fragment-index="0" style="grid-area: 1 / 1 / 2 / 2; background: rgba(255, 251, 0, 0.2); padding: 20px; border-radius: 10px;">
+            <h4 style="color: #eeff00;">Não Funcionais</h4>
+            <ul style="font-size: 0.6em; text-align: left;">
+                <li>O site deverá ser responsivo e adaptável a diferentes dispositivos.</li>
+                <li>O site deverá ter um tempo de carregamento inferior a 3 segundos.</li>  
+                <li>O site deve levar em consideração oscilações de rede (3G/4G).</li>                                     
+            </ul>                      
+        </div>
+    </div>
+</section>
+
+                <section>
+                    <h2>Objetivo do Projeto</h2>
+                    <p class="fragment fade-up">
+                        Desenvolver uma landing page para a oficina mecânica com o objetivo de atrair clientela, que permita apresentar a empresa, divulgar seus serviços, exibir informações de contato e possibilitar que os usuários solicitem orçamentos ou agendem atendimentos de maneira simples e intuitiva.
+                    </p>
+                </section>
+
+                <section class="uml">
+                    <h2>Diagrama UML</h2>
+                    <p>Representação do fluxo de dados do sistema.</p>
+                    <div style="background: #ffffff; padding: 40px; border: 2px dashed #666; margin-top: 20px; width: 500px; height: 400px; display: flex; align-items: center; justify-content: center;">
+                        <img src="imgs/img_slides/UML.svg" alt="Diagrama UML">
                     </div>
                 </section>
 
                 <section>
-                    <h2>3. Requisitos</h2>
-                    <div style="display: flex; gap: 20px; margin-top: 20px;">
-                        <div style="flex: 1; background: rgba(46, 204, 113, 0.2); padding: 20px; border-radius: 10px;">
-                            <h4 style="color: #2ecc71;">Funcionais</h4>
-                            <ul style="font-size: 0.6em;">
-                                <li>Catálogo de peças</li>
-                                <li>FAQ interativo</li>
-                                <li>Navegação fluida</li>
-                            </ul>
-                        </div>
-                        <div style="flex: 1; background: rgba(241, 196, 15, 0.2); padding: 20px; border-radius: 10px;">
-                            <h4 style="color: #f1c40f;">Não Funcionais</h4>
-                            <ul style="font-size: 0.6em;">
-                                <li>Carregamento < 2s</li>
-                                <li>Design Responsivo</li>
-                                <li>Segurança de dados</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>4. Objetivo do Projeto</h2>
-                    <p class="fragment fade-up">Substituir o site legado por uma solução moderna, otimizada para dispositivos móveis e com melhor experiência para o caminhoneiro.</p>
-                </section>
-
-                <section>
-                    <h2>5. Diagrama UML</h2>
-                    <p>Representação das classes e fluxo de dados do sistema.</p>
-                    <div style="background: #333; padding: 40px; border: 2px dashed #666; margin-top: 20px;">
-                        [Imagem do Diagrama UML]
-                    </div>
-                </section>
-
-                <section>
-                    <h2>6. Tecnologias Utilizadas</h2>
+                    <h2>Tecnologias Utilizadas</h2>
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px;">
                         <div style="background: #e44d26; padding: 15px; border-radius: 8px;">HTML5</div>
                         <div style="background: #264de4; padding: 15px; border-radius: 8px;">CSS3</div>
                         <div style="background: #f7df1e; color: black; padding: 15px; border-radius: 8px;">JavaScript</div>
-                        <div style="background: #cf649a; padding: 15px; border-radius: 8px;">SASS</div>
-                        <div style="background: #646cff; padding: 15px; border-radius: 8px;">Vite</div>
+                        <div style="background: #cf649a; padding: 15px; border-radius: 8px;">SMIL</div>
+                        <div style="background: #646cff; padding: 15px; border-radius: 8px;">SVG</div>
                         <div style="background: #444; padding: 15px; border-radius: 8px;">Reveal.js</div>
                     </div>
                 </section>
