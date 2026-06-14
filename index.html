@@ -210,11 +210,11 @@
         <div class="imagens fragment fade-out" data-fragment-index="0" 
              style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%;">
             <div>                            
-                <img class="variacao" src="imgs/img_slides/monocromia negativa.png" alt="Logo recriada">
+                <img class="variacao" src="imgs/img_slides/MONOCROMÁTICO-NEGATIVO.svg" alt="Logo recriada">
                 <h6>Monocromática negativa</h6>
             </div>
             <div>                            
-                <img class="variacao" src="imgs/img_slides/monocromia.png" alt="Logo recriada">
+                <img class="variacao" src="imgs/img_slides/MONOCROMÁTICO-POSITIVO.svg" alt="Logo recriada">
                 <h6>Monocromática positiva</h6>
             </div>                        
         </div>
@@ -278,8 +278,47 @@
                     <p class="fragment fade-up">Foi usada a tag picture para fornecer diferentes versões de imagens com base na resolução e tamanho da tela.</p>
                     <p class="fragment fade-up">As imagens foram cortadas por aspect ratio para manter a proporção adequada em diferentes dispositivos.</p>
                     <p class="fragment fade-up">E salvas com a compactação webp para otimizar o desempenho, reduzindo a carga de rede.</p>
-                </section>
+                </section>             
+                           
+                <section style="height: 100%;" data-background="#1e1e1e">
+                <h3 style="margin-bottom: 10px;">Fluxo Completo</h3>
+                
+                <!-- Janela de visualização (Máscara que esconde o que vazar) -->
+                <div style="height: 600px; overflow: hidden; position: relative;">
+                    
+                    <!-- O container animado que carrega o SVG gigante -->
+                    <div class="container-rolante">
+                        <object data="imgs/diagrama_carrossel.svg" type="image/svg+xml" style="width: 100%; height: 2000px; display: block;"></object>
+                    </div>
+                    
+                </div>
+
+                <!-- Estilos CSS para aplicar a animação de subida/descida -->
+                <style>
+                    .container-rolante {
+                        position: absolute;
+                        width: 100%;
+                        top: 0;
+                        left: 0;
+                        /* 20s = tempo total da rolagem. Aumente para ficar mais lento, diminua para ir mais rápido */
+                        animation: rolarSlide 40s linear;
+                    }
+
+                    @keyframes rolarSlide {
+                        0% {
+                            transform: translateY(0);
+                        }
+                        100% {
+                            /* -1400px é a distância que ele vai subir. 
+                            Cálculo: Altura do SVG (2000px) menos a altura da janela (600px) */
+                            transform: translateY(-1400px); 
+                        }
+                    }
+                </style>
             </section>
+
+
+
 
             <section>
                 <div class="imagens" style="align-items: center; justify-content: center;">
